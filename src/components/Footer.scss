@@ -1,0 +1,40 @@
+.footer {
+    visibility: hidden;
+    @media screen and (min-width:768px) {
+        visibility: visible;
+        color: grey;
+        padding-top: 5rem;
+        font-size: 0.8rem;
+
+        .bordure{
+            border-bottom:1px solid #34495E;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        &__links {
+            display: flex;
+            flex-wrap: wrap;
+            list-style: none;
+            padding: 1rem 0;
+
+            .footer__link {
+                flex: 1 0 50%;
+                margin-bottom: 1.1rem;
+
+                @media screen and (min-width:768px) {
+                    flex: 1 0 25%;
+                }
+            }
+
+            
+        }
+    }
+}
