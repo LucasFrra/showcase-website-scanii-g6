@@ -4,6 +4,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 ## Start the project
 
+### `yarn`
+Install all needed
+
 ### `yarn build`
 
 Builds the app for production to the `build` folder.\
@@ -17,6 +20,9 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ### `yarn run nodemon server/index.js`
 
 Start the server
+
+
+
 
 
 ## Learn More
