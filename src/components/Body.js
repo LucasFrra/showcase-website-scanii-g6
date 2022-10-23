@@ -19,7 +19,7 @@ class Body extends React.Component {
         console.log(request.status);
         if (request.status === 200) {
           const token = JSON.parse(request.responseText);
-          console.log(`token pls ${request.responseText}`)
+          console.log(`${request.responseText}`)
           resolve(token);
         } else {
           reject(request.responseText);
@@ -32,12 +32,10 @@ class Body extends React.Component {
       request.send();
     })
     promise.then(token => {
-      alert('cc')
       return new Promise((resolve, reject) => {
         console.log("step 2");
 
         const credentials = btoa(token.id + ':');
-        alert(credentials)
         const formData = new FormData();
         formData.append("file", document.getElementById('file').files[0]);
 
@@ -48,7 +46,15 @@ class Body extends React.Component {
         request.onreadystatechange = () => {
           console.log(request.status);
           if (request.status === 201) {
-            console.log(request.responseText);
+            var findings = JSON.parse(request.responseText);
+            console.log(findings.findings)
+            if(findings.findings.length === 0){
+              this.setState({ value: 'Any malware detected.'})
+            }else{
+              this.setState({ value: `Malware detected !  ${findings.findings}`})
+            }
+            
+            
             //resolve(JSON.parse(request.responseText))
           } else {
             //reject(request.responseText);
@@ -66,6 +72,7 @@ class Body extends React.Component {
 
 
   render() {
+    
     return (
       <div>
         <div className='header-form'>
@@ -85,7 +92,13 @@ class Body extends React.Component {
           <div className='form__content'>
             <input className="input-submit" type="submit" value='Submit' />
           </div>
+
+          <div className='form__content'>
+            <span>{this.state.value}</span>
+          </div>
         </form>
+
+        
       </div>
     );
   }
